@@ -1,0 +1,16 @@
+# MacOS Build Notes
+
+More or less, there is no support for building on MacOS. This is my attempt to get it to work. What good is having the source if you can't build it?
+
+- install a bunch of stuff with `brew`
+ - openssl fdk-aac fltk portaudio lame
+- set some env vars
+ - `export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"`
+- configure with some other junk
+ - found some of this here:  https://github.com/Bombe/butt 
+ - `CPPFLAGS="-ObjC++ -I../xcode/include -I/usr/local/opt/openssl@1.1/include" ./configure --disable-ssl`
+ - yes, i'm disabling SSL but i set it up any how? heck if I know
+- next step is to make it, but it dies
+ - `make`
+ - dies at `CurrentTrackOSX.m:10:9: fatal error: 'iTunes.h' file not found`
+
