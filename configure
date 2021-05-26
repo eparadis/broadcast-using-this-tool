@@ -8152,6 +8152,158 @@ fi
         build_mac=yes
         { $as_echo "$as_me:${as_lineno-$LINENO}: MacOS detected" >&5
 $as_echo "$as_me: MacOS detected" >&6;}
+	if test "x$enable_aac" != "xno"; then :
+
+	       { $as_echo "$as_me:${as_lineno-$LINENO}: checking for aacEncOpen in -lfdk-aac" >&5
+$as_echo_n "checking for aacEncOpen in -lfdk-aac... " >&6; }
+if ${ac_cv_lib_fdk_aac_aacEncOpen+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lfdk-aac  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char aacEncOpen ();
+int
+main ()
+{
+return aacEncOpen ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_fdk_aac_aacEncOpen=yes
+else
+  ac_cv_lib_fdk_aac_aacEncOpen=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_fdk_aac_aacEncOpen" >&5
+$as_echo "$ac_cv_lib_fdk_aac_aacEncOpen" >&6; }
+if test "x$ac_cv_lib_fdk_aac_aacEncOpen" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBFDK_AAC 1
+_ACEOF
+
+  LIBS="-lfdk-aac $LIBS"
+
+else
+  as_fn_error $? "**** Could not find libfdk-aac     ****" "$LINENO" 5
+
+fi
+
+fi
+	
+    if test "x$enable_ssl" != "xno"; then :
+
+	       { $as_echo "$as_me:${as_lineno-$LINENO}: checking for SSL_CTX_new in -lssl" >&5
+$as_echo_n "checking for SSL_CTX_new in -lssl... " >&6; }
+if ${ac_cv_lib_ssl_SSL_CTX_new+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lssl  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char SSL_CTX_new ();
+int
+main ()
+{
+return SSL_CTX_new ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_ssl_SSL_CTX_new=yes
+else
+  ac_cv_lib_ssl_SSL_CTX_new=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_ssl_SSL_CTX_new" >&5
+$as_echo "$ac_cv_lib_ssl_SSL_CTX_new" >&6; }
+if test "x$ac_cv_lib_ssl_SSL_CTX_new" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBSSL 1
+_ACEOF
+
+  LIBS="-lssl $LIBS"
+
+else
+  as_fn_error $? "**** Could not find libssl     ****" "$LINENO" 5
+
+fi
+
+	       { $as_echo "$as_me:${as_lineno-$LINENO}: checking for EVP_EncryptInit in -lcrypto" >&5
+$as_echo_n "checking for EVP_EncryptInit in -lcrypto... " >&6; }
+if ${ac_cv_lib_crypto_EVP_EncryptInit+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lcrypto  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char EVP_EncryptInit ();
+int
+main ()
+{
+return EVP_EncryptInit ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_crypto_EVP_EncryptInit=yes
+else
+  ac_cv_lib_crypto_EVP_EncryptInit=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_crypto_EVP_EncryptInit" >&5
+$as_echo "$ac_cv_lib_crypto_EVP_EncryptInit" >&6; }
+if test "x$ac_cv_lib_crypto_EVP_EncryptInit" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBCRYPTO 1
+_ACEOF
+
+  LIBS="-lcrypto $LIBS"
+
+else
+  as_fn_error $? "**** Could not find libcrypto    ****" "$LINENO" 5
+
+fi
+
+fi
+
         ;;
     freebsd*)
         build_freebsd=yes
