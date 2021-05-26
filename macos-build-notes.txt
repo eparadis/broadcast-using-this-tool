@@ -8,9 +8,11 @@ More or less, there is no support for building on MacOS. This is my attempt to g
  - `export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"`
 - configure with some other junk
  - found some of this here:  https://github.com/Bombe/butt 
- - `CPPFLAGS="-ObjC++ -I../xcode/include -I/usr/local/opt/openssl@1.1/include" ./configure --disable-ssl`
- - yes, i'm disabling SSL but i set it up any how? heck if I know
+ - `CPPFLAGS="-ObjC++ -I../xcode/include -I/usr/local/opt/openssl@1.1/include" ./configure `
+- manually tweak `src/Makefile`
+ - remove all references to `CurrentTrackOSX`
+ - I should do this by tweaking `Makefile.am` but then you need `automake` and running that breaks everything
 - next step is to make it, but it dies
  - `make`
- - dies at `CurrentTrackOSX.m:10:9: fatal error: 'iTunes.h' file not found`
-
+ - dies trying to link with unknown symbols `askForMicPermission()`, `getCurrentTrackFunctionFromId(int)`, a bunch of `Fl_My_Native_File_Chooser` stuff, and a pile of `_libintl_*` stuff 
+ - since it's at the link stage, it's probably just getting more `-I` and/or `-L` flags correct
