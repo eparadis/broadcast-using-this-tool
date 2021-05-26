@@ -1,0 +1,15 @@
+*.o
+
+Makefile
+config.log
+config.status
+po/Makefile
+po/Makefile.in
+po/POTFILES
+src/.deps/
+src/FLTK/.deps/
+src/FLTK/.dirstamp
+src/Makefile
+stamp-h1
+
+
